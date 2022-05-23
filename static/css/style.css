@@ -1,0 +1,90 @@
+:root {
+    --input-width : 5rem;
+    --default-border : 1px solid rgba(128, 128, 128, 0.51);
+    --impact-color : #0ddab9;
+    --default-color : #3a3737;
+}
+header {
+    margin-left : 3rem;
+    margin-top : 1.5rem;
+    margin-bottom : 1.5rem;
+    padding : 3rem;
+}
+
+main {
+    width : 90%;
+    margin : 0 auto;
+}
+main .inputData {
+    width : 100%;
+}
+main .inputData .item{
+    display : inline-block;
+    border : var(--default-border);
+    padding : 1rem;
+    margin-right : 0.5rem;
+}
+main .inputData .item label, input, select {
+    border : 0;
+}
+
+main .inputData .item label {
+    border-right : 1px solid var(--impact-color);
+    padding-right : 1rem;
+}
+main .inputData input[type="submit"] {
+    display : inline-block;
+    width : 5rem;
+    color : white;
+    background : var(--impact-color);
+    padding : 1rem;
+    border-radius: 15px;
+    margin-left : 0.5rem;
+}
+.resultForm {
+    width : 100%;
+}
+.resultForm .errorForm {
+    margin-top : 2rem;
+    margin-bottom : 2rem;
+    display : inline-block;
+    color : white;
+    font-weight: 600;
+    background : rgba(218, 13, 13, 0.89);
+    padding : 1rem;
+    border-radius: 1rem;
+}
+.title {
+    font-size : 2rem;
+    font-weight : 600;
+    margin : 1rem;
+}
+.greencar .title {
+    color : green;
+}
+.socar .title {
+    color : #1fadc5;
+}
+.greencar, .socar {
+    margin-top: 3rem;
+    margin-bottom : 3rem;
+}
+.greencar .dataTitle {
+    padding : 1rem;
+    background: rgba(82, 136, 93, 0.52);
+}
+.socar .dataTitle {
+    padding : 1rem;
+    background : #1fadc5;
+    color : white;
+}
+.dataForm {
+    display : grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    text-align : center;
+}
+.dataItem {
+    padding : 1rem;
+    border-bottom : 1px solid var(--default-color);
+}

@@ -1,0 +1,109 @@
+{% load static %}
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Compare</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<header>
+    <h1>Compare Page</h1>
+</header>
+<main>
+<form method="get">
+    {% csrf_token %}
+    <div class="inputData">
+        <input type="hidden" name="pid" value="1">
+        <div class="item">
+            <label for="start">대여시작시간</label>
+            <input type="time" name="start" id="start" value="{{ start }}" required>
+        </div>
+        <div class="item">
+            <label for="end">대여종료시간</label>
+            <input type="time" name="end" id="end" value="{{ end }}" required>
+        </div>
+        <div class="item">
+            <label for="ctype">차 종 선택</label>
+            <select name="car_type" id="ctype">
+                <option value="경형">경형</option>
+                <option value="준중형">준중형</option>
+                <option value="중형">중형</option>
+                <option value="suv">SUV</option>
+            </select>
+        </div>
+
+        <div class="item">
+            <label for="etype">보험단계</label>
+            <select name="ensure_type" id="etype">
+                <option value="1">최대 70만원 부담</option>
+                <option value="2">최대 30만원 부담</option>
+                <option value="3">최대 5만원 부담</option>
+            </select>
+        </div>
+        <div class="item">
+            <label for="km">예상주행거리</label>
+            <input type="number" name="driving_km" id="km" min="0" required>km
+        </div>
+        <div class="item">
+            <label for="rentalday">대여시작요일</label>
+            <select name="rental_day" id="rentalday">
+                <option value="월">월</option>
+                <option value="화">화</option>
+                <option value="수">수</option>
+                <option value="목">목</option>
+                <option value="금">금</option>
+                <option value="토">토</option>
+                <option value="일">일</option>
+            </select>
+        </div><input type="submit" name="비교하기" id="compare">
+    </div>
+</form>
+    <div class="resultForm">
+        {% if error %}
+            <div class="errorForm">{{ error }}</div>
+        {% endif %}
+            <div class="greencar">
+            <div class="title">GREENCAR</div>
+                <div class="dataForm">
+                <div class="dataTitle">차종</div>
+                <div class="dataTitle">총 금액</div>
+                <div class="dataTitle">적용가능쿠폰</div>
+            {% if greencar %}
+                {% for data in greencar %}
+                    <div class="dataItem">{{ data|intcomma }}</div>
+                {% endfor %}
+            {% else %}
+                <div class="dataItem"></div>
+                <div class="dataItem"></div>
+                <div class="dataItem"></div>
+            {% endif %}
+                </div>
+            </div>
+            {% if socar %}
+            <div class="socar">
+            <div class="title">SOCAR</div>
+                <div class="dataForm">
+                <div class="dataTitle">차종</div>
+                <div class="dataTitle">총 금액</div>
+                <div class="dataTitle">적용가능쿠폰</div>
+                {% for data in socar %}
+                    <div class="dataItem">{{ data|intcomma }}</div>
+                {% endfor %}
+            {% endif %}
+                </div>
+            </div>
+    </div>
+</main>
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<script>
+    function car_type() {
+        $("#ctype").val("{{ car_type }}");
+        $("#etype").val({{ ensure_type }});
+        $("#km").val("{{ driving_km }}");
+        $("#rentalday").val("{{ rental_day }}");
+    }car_type();
+</script>
+</body>
+</html>
