@@ -31,7 +31,7 @@ def index(request):
                 'ensure_type' : ensure_type,
                 'driving_km' : driving_km,
                 'rental_day' : rental_day,
-                'error' : "대여시작시간이 대여종료시간보다 빠릅니다."
+                'error' : "대여종료시간이 대여시작시간보다 빠릅니다."
             }
             return render(request, "index.html", context)
 
