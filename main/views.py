@@ -21,6 +21,7 @@ def index(request):
     greencar = list()
     socar = list()
 
+
     if int(pid):
         if compare_time(start, end) > 0 :
             context = {
