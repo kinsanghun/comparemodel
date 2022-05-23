@@ -64,20 +64,16 @@
         {% if error %}
             <div class="errorForm">{{ error }}</div>
         {% endif %}
+            {% if greencar %}
             <div class="greencar">
             <div class="title">GREENCAR</div>
                 <div class="dataForm">
                 <div class="dataTitle">차종</div>
                 <div class="dataTitle">총 금액</div>
                 <div class="dataTitle">적용가능쿠폰</div>
-            {% if greencar %}
                 {% for data in greencar %}
                     <div class="dataItem">{{ data|intcomma }}</div>
                 {% endfor %}
-            {% else %}
-                <div class="dataItem"></div>
-                <div class="dataItem"></div>
-                <div class="dataItem"></div>
             {% endif %}
                 </div>
             </div>
